@@ -5,27 +5,28 @@ using namespace std;
 
 void encrypt(string, string);
 void decrypt(string, string);
+int userInterface();
 
 int main() {
-    cout << "Greetings!";
+    cout << "Greetings!\n";
 
     int operation = userInterface();
-    string key;
     string msg;
+    string key;
     switch (operation)
     {
     case 1:
         cout << "Enter message to encrypt: ";
-        cin >> msg;
+        getline(cin >> ws, msg);
         cout << "Enter key: ";
-        cin >> key;
+        getline(cin >> ws, key);
         encrypt(msg, key);
         break;
     case 2:
         cout << "Enter message to decrypt: ";
-        cin >> msg;
+        getline(cin >> ws, msg);
         cout << "Enter key: ";
-        cin >> key;
+        getline(cin >> ws, key);
         decrypt(msg, key);
         break;
     default:
