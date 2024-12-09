@@ -9,10 +9,12 @@ int userInterface();
 
 int main() {
     cout << "Greetings!\n";
-
-    int operation = userInterface();
+    int operation;
     string msg;
     string key;
+
+    do {
+    operation = userInterface();
     switch (operation)
     {
     case 1:
@@ -21,6 +23,7 @@ int main() {
         cout << "Enter key: ";
         getline(cin >> ws, key);
         encrypt(msg, key);
+        cout << endl;
         break;
     case 2:
         cout << "Enter message to decrypt: ";
@@ -28,10 +31,16 @@ int main() {
         cout << "Enter key: ";
         getline(cin >> ws, key);
         decrypt(msg, key);
+        cout << endl;
         break;
+    case 3:
+        cout << "Shutting down...";
+        continue;
     default:
         break;
     }
+    } while (operation != 3);
+    return 0;
 }
 
 int userInterface() {
@@ -42,7 +51,7 @@ int userInterface() {
     cout << "Please select your operation: ";
     cin >> choice;
     if (choice > 3 || choice < 1) {
-        cout << "That is not a valid choice.";
+        cout << "That is not a valid choice.\n";
     }
     else {
         validation = true;
@@ -71,7 +80,7 @@ void encrypt(string msg, string key) {
         result.push_back(r);
     }
 
-    cout << result;
+    cout << "Encrypted phrase: " << result;
 }
 
 void decrypt(string msg, string key) {
@@ -88,5 +97,5 @@ void decrypt(string msg, string key) {
         }
         result.push_back(r);
     }
-    cout << result;
+    cout << "Decrypted phrase: " << result;
 }
